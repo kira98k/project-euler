@@ -16,6 +16,7 @@ typedef long double LD;
 typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
+// Using array as a number where bignum[i] denots the ith place digit
 LL sumOfDigitsOfFactorial(LL n) {
     VLL bignum(1, 1);
     rep(i, 1, n+1) {

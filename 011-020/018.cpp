@@ -25,6 +25,8 @@ int main() {
             VLL next(i);
             rep(j, 0, i) {
                 cin >> next[j];
+                // Add maximum curr[j] and curr[j-1] to next[j] if they exist
+                // Because the numbers can either go down or down-right
                 if(i > 1) {
                     if(j == 0) {
                         next[j] += curr[j];
@@ -39,6 +41,7 @@ int main() {
             }
             curr = next;
         }
+        // Take the maxmimum present sum
         pll(*max_element(curr.begin(), curr.end())); nl;
     }
 }

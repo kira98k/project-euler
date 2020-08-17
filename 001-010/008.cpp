@@ -17,24 +17,24 @@ typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
 int main() {
-    sll(t);
-    rep(_, 0, t) {
-        sll(n); sll(k);
-        string str; cin >> str;
-        LL maxProduct = 0;
-        rep(i, 0, n) {
-            // Take product only if the kth digit is present
-            if(i + k - 1 < n) {
-                LL product = 1;
-                // Take product for k digist starting at i
-                rep(j, i, i+k) {
-                    LL digit = LL(str[j] - '0');
-                    product *= digit;
-                }
-                // Store the maximum of the products
-                maxProduct = max(maxProduct, product);
-            }
-        }
-        pll(maxProduct); nl;
-    }
+	sll(t);
+	rep(_, 0, t) {
+		sll(n); sll(k);
+		string str; cin >> str;
+		LL maxProduct = 0;
+		rep(i, 0, n) {
+			// Take product only if the kth digit is present
+			if(i + k - 1 < n) {
+				LL product = 1;
+				// Take product for k digist starting at i
+				rep(j, i, i+k) {
+					LL digit = LL(str[j] - '0');
+					product *= digit;
+				}
+				// Store the maximum of the products
+				maxProduct = max(maxProduct, product);
+			}
+		}
+		pll(maxProduct); nl;
+	}
 }

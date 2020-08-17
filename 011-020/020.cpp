@@ -18,26 +18,26 @@ typedef pair<LL, LL> PLL;
 
 // Using array as a number where bignum[i] denots the ith place digit
 LL sumOfDigitsOfFactorial(LL n) {
-    VLL bignum(1, 1);
-    rep(i, 1, n+1) {
-        LL carry = 0;
-        rep(it, bignum.begin(), bignum.end()) {
-            LL digit = (*it) * i + carry;
-            *it = digit % 10;
-            carry = digit / 10;
-        }
-        while(carry != 0) {
-            bignum.push_back(carry % 10);
-            carry /= 10;
-        }
-    }
-    return accumulate(bignum.begin(), bignum.end(), 0);
+	VLL bignum(1, 1);
+	rep(i, 1, n+1) {
+		LL carry = 0;
+		rep(it, bignum.begin(), bignum.end()) {
+			LL digit = (*it) * i + carry;
+			*it = digit % 10;
+			carry = digit / 10;
+		}
+		while(carry != 0) {
+			bignum.push_back(carry % 10);
+			carry /= 10;
+		}
+	}
+	return accumulate(bignum.begin(), bignum.end(), 0);
 }
 
 int main() {
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        pll(sumOfDigitsOfFactorial(n)); nl;
-    }
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		pll(sumOfDigitsOfFactorial(n)); nl;
+	}
 }

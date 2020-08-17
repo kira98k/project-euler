@@ -18,72 +18,72 @@ typedef pair<LL, LL> PLL;
 
 // Check Up-Down
 LL checkUpDown(LL grid[20][20]) {
-    LL maxProduct = -1;
-    rep(column, 0, 20) {
-        rep(row, 0, 17) {
-            LL product = 1;
-            rep(i, 0, 4) {
-                product *= grid[row+i][column];
-            }
-            maxProduct = max(maxProduct, product);
-        }
-    }
-    return maxProduct;
+	LL maxProduct = -1;
+	rep(column, 0, 20) {
+		rep(row, 0, 17) {
+			LL product = 1;
+			rep(i, 0, 4) {
+				product *= grid[row+i][column];
+			}
+			maxProduct = max(maxProduct, product);
+		}
+	}
+	return maxProduct;
 }
 
 // Check Left-Right
 LL checkLeftRight(LL grid[20][20]) {
-    LL maxProduct = -1;
-    rep(row, 0, 20) {
-        rep(column, 0, 17) {
-            LL product = 1;
-            rep(i, 0, 4) {
-                product *= grid[row][column+i];
-            }
-            maxProduct = max(maxProduct, product);
-        }
-    }
-    return maxProduct;
+	LL maxProduct = -1;
+	rep(row, 0, 20) {
+		rep(column, 0, 17) {
+			LL product = 1;
+			rep(i, 0, 4) {
+				product *= grid[row][column+i];
+			}
+			maxProduct = max(maxProduct, product);
+		}
+	}
+	return maxProduct;
 }
 
 // Check Diagonal
 LL checkDiagonal(LL grid[20][20]) {
-    LL maxProduct = -1;
-    // Left to Right Diagonal
-    rep(row, 0, 17) {
-        rep(column, 0, 17) {
-            LL product = 1;
-            rep(i, 0, 4) {
-                product *= grid[row+i][column+i];
-            }
-            maxProduct = max(maxProduct, product);
-        }
-    }
+	LL maxProduct = -1;
+	// Left to Right Diagonal
+	rep(row, 0, 17) {
+		rep(column, 0, 17) {
+			LL product = 1;
+			rep(i, 0, 4) {
+				product *= grid[row+i][column+i];
+			}
+			maxProduct = max(maxProduct, product);
+		}
+	}
 
-    // Right to Left Diagonal
-    rep(row, 0, 17) {
-        rep(column, 3, 20) {
-            LL product = 1;
-            rep(i, 0, 4) {
-                product *= grid[row+i][column-i];
-            }
-            maxProduct = max(maxProduct, product);
-        }
-    }
+	// Right to Left Diagonal
+	rep(row, 0, 17) {
+		rep(column, 3, 20) {
+			LL product = 1;
+			rep(i, 0, 4) {
+				product *= grid[row+i][column-i];
+			}
+			maxProduct = max(maxProduct, product);
+		}
+	}
 
-    return maxProduct;
+	return maxProduct;
 }
 
 int main() {
-    LL grid[20][20];
-    rep(i, 0, 20) {
-        rep(j, 0, 20) {
-            cin >> grid[i][j];
-        }
-    }
-    LL maxUpDown = checkUpDown(grid);
-    LL maxLeftRight = checkLeftRight(grid);
-    LL maxDiagonal = checkDiagonal(grid);
-    LL maxProduct = max(maxDiagonal, max(maxUpDown, maxLeftRight));
-    pll(maxProduct); nl;
+	LL grid[20][20];
+	rep(i, 0, 20) {
+		rep(j, 0, 20) {
+			cin >> grid[i][j];
+		}
+	}
+	LL maxUpDown = checkUpDown(grid);
+	LL maxLeftRight = checkLeftRight(grid);
+	LL maxDiagonal = checkDiagonal(grid);
+	LL maxProduct = max(maxDiagonal, max(maxUpDown, maxLeftRight));
+	pll(maxProduct); nl;
 }

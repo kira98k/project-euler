@@ -17,8 +17,8 @@ typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
 int main() {
-    sll(t);
-    rep(_, 0, t) {
-        
-    }
+	sll(t);
+	rep(_, 0, t) {
+
+	}
 }

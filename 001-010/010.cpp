@@ -22,33 +22,33 @@ VLL primes;
 
 // Calculate all primes upto 10^6 + 10
 void sieve() {
-    rep(i, 2, (LL) MAXN) {
-        isPrime[i] = true;
-    }
-    rep(prime, 2, (LL) MAXN) {
-        if(isPrime[prime]) {
-            primes.push_back(prime);
-            for (LL d = prime * prime; d < MAXN; d += prime) {
-                isPrime[d] = false;
-            }
-        }
-    }
+	rep(i, 2, (LL) MAXN) {
+		isPrime[i] = true;
+	}
+	rep(prime, 2, (LL) MAXN) {
+		if(isPrime[prime]) {
+			primes.push_back(prime);
+			for (LL d = prime * prime; d < MAXN; d += prime) {
+				isPrime[d] = false;
+			}
+		}
+	}
 }
 
 int main() {
-    sieve();
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        LL sum = 0;
-        for(LL prime : primes) {
-            if(prime <= n) {
-                sum += prime;
-            }
-            else {
-                break;
-            }
-        }
-        pll(sum); nl;
-    }
+	sieve();
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		LL sum = 0;
+		for(LL prime : primes) {
+			if(prime <= n) {
+				sum += prime;
+			}
+			else {
+				break;
+			}
+		}
+		pll(sum); nl;
+	}
 }

@@ -24,33 +24,33 @@ LL digits[MAXN];
 // the smallest number of the form '9999...' that is divisible by d
 // 2 and 5 do not add anything to the repetition of digits
 void init() {
-    rep(n, 0, (LL)MAXN) {
-        if(n <= 2 || n == 5) {
-            digits[n] = 0;
-        }
-        else if(n % 2 == 0) {
-            digits[n] = digits[n/2];
-        }
-        else if(n % 5 == 0) {
-            digits[n] = digits[n/5];
-        }
-        else {
-            LL x = 10, p = 1;
-            while(x%n != 1) {
-                x = (x * 10) % n;
-                p++;
-            }
-            digits[n] = p;
-        }
-    }
+	rep(n, 0, (LL)MAXN) {
+		if(n <= 2 || n == 5) {
+			digits[n] = 0;
+		}
+		else if(n % 2 == 0) {
+			digits[n] = digits[n/2];
+		}
+		else if(n % 5 == 0) {
+			digits[n] = digits[n/5];
+		}
+		else {
+			LL x = 10, p = 1;
+			while(x%n != 1) {
+				x = (x * 10) % n;
+				p++;
+			}
+			digits[n] = p;
+		}
+	}
 }
 
 int main() {
-    init();
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        LL position = max_element(digits+2, digits+n) - digits;
-        pll(position); nl;
-    }
+	init();
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		LL position = max_element(digits+2, digits+n) - digits;
+		pll(position); nl;
+	}
 }

@@ -17,11 +17,11 @@ typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
 int main() {
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        LL sum_of_squares = n * (n + 1) * (2 * n + 1) / 6;
-        LL square_of_sum = (n * (n + 1) / 2) * (n * (n + 1) / 2);
-        pll(abs(sum_of_squares - square_of_sum)); nl;
-    }
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		LL sum_of_squares = n * (n + 1) * (2 * n + 1) / 6;
+		LL square_of_sum = (n * (n + 1) / 2) * (n * (n + 1) / 2);
+		pll(abs(sum_of_squares - square_of_sum)); nl;
+	}
 }

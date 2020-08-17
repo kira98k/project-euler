@@ -18,27 +18,27 @@ typedef pair<LL, LL> PLL;
 
 // Greatest Common Divisor
 LL gcd(LL a, LL b) {
-    if(a == 0) {
-        return b;
-    }
-    return gcd(b % a, a);
+	if(a == 0) {
+		return b;
+	}
+	return gcd(b % a, a);
 }
 
 // Lowest Common Multiple 
 LL lcm(LL a, LL b) {
-    LL g = gcd(a, b);
-    return (a * b / g);
+	LL g = gcd(a, b);
+	return (a * b / g);
 }
 
 int main() {
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        LL l = 1;
-        // Find Lowest Common Multiple of numbers from 1 to n
-        rep(i, 1, n+1) {
-            l = lcm(l, i);
-        }
-        pll(l); nl;
-    }
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		LL l = 1;
+		// Find Lowest Common Multiple of numbers from 1 to n
+		rep(i, 1, n+1) {
+			l = lcm(l, i);
+		}
+		pll(l); nl;
+	}
 }

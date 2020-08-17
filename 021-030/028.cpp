@@ -39,22 +39,22 @@ Answer = 4 * n(n+1)(n+2) / 6 - 6*(n+1)*(n+1) / 4 + 6*(n+1)/2 - 3
 
 // Modular Multiplication
 LL modmul(VLL nums, LL m) {
-    LL r = 1;
-    for(LL num : nums) {
-        r = (r * (num % m)) % m;
-    }
-    return (r%m);
+	LL r = 1;
+	for(LL num : nums) {
+		r = (r * (num % m)) % m;
+	}
+	return (r%m);
 }
 
 int main() {
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        LL sum = ( modmul({2, n, n+1, n+2, MODINV3}, MOD) 
-                - modmul({3, n+1, n+1, MODINV2}, MOD) + modmul({3, n+1}, MOD) - 3 ) % MOD;
-        while(sum < 0) {
-            sum += MOD;
-        }
-        pll(sum); nl;
-    }
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		LL sum = ( modmul({2, n, n+1, n+2, MODINV3}, MOD) 
+				- modmul({3, n+1, n+1, MODINV2}, MOD) + modmul({3, n+1}, MOD) - 3 ) % MOD;
+		while(sum < 0) {
+			sum += MOD;
+		}
+		pll(sum); nl;
+	}
 }

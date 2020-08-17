@@ -19,23 +19,23 @@ typedef pair<LL, LL> PLL;
 const LL MAXN = 4e6;
 
 bool check(LL number, LL power) {
-    LL sum = 0;
-    LL x = number;
-    while(x != 0) {
-        LL digit = x%10;
-        sum += (LL)pow(digit, power);
-        x /= 10;
-    }
-    return (sum == number);
+	LL sum = 0;
+	LL x = number;
+	while(x != 0) {
+		LL digit = x%10;
+		sum += (LL)pow(digit, power);
+		x /= 10;
+	}
+	return (sum == number);
 }
 
 int main() {
-    sll(n);
-    LL sum = 0;
-    rep(i, 2, (LL)MAXN) {
-        if(check(i, n)) {
-            sum += i;
-        }
-    }
-    cout << sum << endl;
+	sll(n);
+	LL sum = 0;
+	rep(i, 2, (LL)MAXN) {
+		if(check(i, n)) {
+			sum += i;
+		}
+	}
+	cout << sum << endl;
 }

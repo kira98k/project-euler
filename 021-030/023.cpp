@@ -21,54 +21,54 @@ LL lpd[MAXN], sum_of_divisors[MAXN];
 
 // Calculate Lowest Prime Divisor Of Each Number
 void sieve() {
-    rep(i, 0, (LL)MAXN) lpd[i] = i;
-    rep(prime, 2, (LL)MAXN) {
-        if(lpd[prime] == prime) {
-            for(LL d = prime * prime; d < MAXN; d += prime) {
-                lpd[d] = prime;
-            }
-        }
-    }
+	rep(i, 0, (LL)MAXN) lpd[i] = i;
+	rep(prime, 2, (LL)MAXN) {
+		if(lpd[prime] == prime) {
+			for(LL d = prime * prime; d < MAXN; d += prime) {
+				lpd[d] = prime;
+			}
+		}
+	}
 }
 
 void init() {
-    sieve();
-    rep(x, 1, (LL)MAXN) {
-        if(x == 1) {
-            sum_of_divisors[x] = 1;
-        }
-        else {
-            LL prime = lpd[x];
-            LL count = 0, number = x;
-            while(number % prime == 0) {
-                count++;
-                number /= prime;
-            }
-            sum_of_divisors[x] = sum_of_divisors[number] * ((LL)(pow(prime, count+1)-1)/(prime-1));
-        }
-    }
+	sieve();
+	rep(x, 1, (LL)MAXN) {
+		if(x == 1) {
+			sum_of_divisors[x] = 1;
+		}
+		else {
+			LL prime = lpd[x];
+			LL count = 0, number = x;
+			while(number % prime == 0) {
+				count++;
+				number /= prime;
+			}
+			sum_of_divisors[x] = sum_of_divisors[number] * ((LL)(pow(prime, count+1)-1)/(prime-1));
+		}
+	}
 }
 
 bool isAbundant(LL n) {
-    if(n < 2) {
-        return false;
-    }
-    LL sum_of_proper_diviors = sum_of_divisors[n] - n;
-    return (sum_of_proper_diviors > n);
+	if(n < 2) {
+		return false;
+	}
+	LL sum_of_proper_diviors = sum_of_divisors[n] - n;
+	return (sum_of_proper_diviors > n);
 }
 
 int main() {
-    init();
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        string ans = "NO";
-        rep(x, 0, n) {
-            if(isAbundant(x) && isAbundant(n-x)) {
-                ans = "YES";
-                break;
-            }
-        }
-        cout << ans << endl;
-    }
+	init();
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		string ans = "NO";
+		rep(x, 0, n) {
+			if(isAbundant(x) && isAbundant(n-x)) {
+				ans = "YES";
+				break;
+			}
+		}
+		cout << ans << endl;
+	}
 }

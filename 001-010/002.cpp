@@ -17,21 +17,21 @@ typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
 int main() {
-    sll(t);
-    rep(_, 0, t) {
-        sll(n);
-        LL sum = 0;
-        LL current = 1, next = 2;
-        while(current <= n) {
-            // If even add to the sum
-            if(current % 2 == 0) {
-                sum += current;
-            }
-            // Next number is the sum of the previous two numbers
-            LL next_to_next = current +  next;
-            current = next;
-            next = next_to_next;
-        }
-        pll(sum); nl;
-    }
+	sll(t);
+	rep(_, 0, t) {
+		sll(n);
+		LL sum = 0;
+		LL current = 1, next = 2;
+		while(current <= n) {
+			// If even add to the sum
+			if(current % 2 == 0) {
+				sum += current;
+			}
+			// Next number is the sum of the previous two numbers
+			LL next_to_next = current +  next;
+			current = next;
+			next = next_to_next;
+		}
+		pll(sum); nl;
+	}
 }

@@ -5,7 +5,7 @@
 #define rep(i, begin, end) for (__typeof(end) i = (begin) - ((begin) > (end)); i != (end) - ((begin) > (end)); i += 1 - 2 * ((begin) > (end)))
 // Same as above. Only goes forward.
 #define srep(i, begin, end) for (__typeof(end) i = begin; i != end; i++)
-#define sll(x) LL x; cin >> x
+#define sll(x) LL x; scanf("%lld", &x)
 #define pll(x) printf("%lld ", x)
 #define nl printf("\n")
 

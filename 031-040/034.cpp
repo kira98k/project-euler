@@ -16,22 +16,31 @@ typedef long double LD;
 typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
-int main() {
-	sll(t);
-	rep(_, 0, t) {
-		sll(n);
-		LL sum = 0;
-		LL current = 1, next = 2;
-		while(current <= n) {
-			// If even add to the sum
-			if(current % 2 == 0) {
-				sum += current;
-			}
-			// Next number is the sum of the previous two numbers
-			LL next_to_next = current + next;
-			current = next;
-			next = next_to_next;
-		}
-		pll(sum); nl;
+LL factorial(LL n) {
+	if(n <= 1) {
+		return 1;
 	}
+	return n * factorial(n - 1);
+}
+
+bool isCurious(LL n) {
+	LL sum = 0;
+	LL temp = n;
+	while(temp != 0) {
+		sum += factorial(temp % 10);
+		sum %= n;
+		temp /= 10;
+	}
+	return (sum % n == 0);
+}
+
+int main() {
+	sll(n);
+	LL sum = 0;
+	rep(i, 10, n+1) {
+		if(isCurious(i)) {
+			sum += i;
+		}
+	}
+	cout << sum << endl;
 }

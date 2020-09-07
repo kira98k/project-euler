@@ -16,31 +16,37 @@ typedef long double LD;
 typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
-const LD PHI = 1.618033988749895;
-const LD phi = -0.6180339887498949;
+const LL MOD = 1e9 + 7;
+const LL MAXN = 1e5+10;
+const LL coins[8] = {1, 2, 5, 10, 20, 50, 100, 200};
 
-const LL MAXN = 24010;
-LL digits[MAXN];
 
-// F(n) = (PHI^n - phi^n) / sqrt(5)
-// At n > 20, we can ignore the contribution of phi^n
-// Number of digits in x = floor( log10(x) + 1 )
-LL getDigits(LL n) {
-	if(n <= 20) {
-		LL a = 0, b = 1;
-		rep(i, 0, n) {
-			LL tmp = a+b;
-			a = b;
-			b = tmp;
-		}
-		return (LL)(log10(a)+1);
-	}
-	return (LL)(n * log10(PHI) - log10(5) / 2.0 + 1);
-}
+// ways[i][j] = Number of making j with first i coins
+LL ways[9][MAXN];
 
+// Precalculate ways 
 void init() {
-	rep(n, 1, (LL)MAXN) {
-		digits[n] = getDigits(n);
+	rep(i, 0, 9) {
+		rep(j, 0, (LL)MAXN) {
+			ways[i][j] = 0;
+		}
+	}
+	rep(i, 0, 9) {
+		rep(j, 0, (LL)MAXN) {
+			if(j == 0) {
+				ways[i][j] = 1;
+			}
+			else if(i == 0) {
+				ways[i][j] = 0;
+			}
+			else {
+				ways[i][j] = ways[i-1][j];
+				if(coins[i-1] <= j) {
+					ways[i][j] += ways[i][j - coins[i-1]];
+				}
+				ways[i][j] %= MOD;
+			}
+		}
 	}
 }
 
@@ -49,7 +55,6 @@ int main() {
 	sll(t);
 	rep(_, 0, t) {
 		sll(n);
-		LL position = lower_bound(digits+1, digits+MAXN, n) - digits;
-		cout << position << endl;
+		cout << ways[8][n] << endl;
 	}
 }

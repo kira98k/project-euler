@@ -17,21 +17,30 @@ typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
 int main() {
-	sll(t);
-	rep(_, 0, t) {
-		sll(n);
-		LL sum = 0;
-		LL current = 1, next = 2;
-		while(current <= n) {
-			// If even add to the sum
-			if(current % 2 == 0) {
-				sum += current;
+	sll(n);
+	VLL digits = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	digits.resize(n);
+	set<LL> nums;
+	do {
+		rep(a, 0, n) {
+			rep(b, a+1, n-1) {
+				LL A = 0, B = 0, C = 0;
+				rep(i, 0, n) {
+					if(i <= a) {
+						A = 10*A + digits[i];
+					}
+					else if(i <= b) {
+						B = 10*B + digits[i];
+					}
+					else {
+						C = 10*C + digits[i];
+					}
+				}
+				if(A*B == C) {
+					nums.insert(C);
+				}
 			}
-			// Next number is the sum of the previous two numbers
-			LL next_to_next = current + next;
-			current = next;
-			next = next_to_next;
 		}
-		pll(sum); nl;
-	}
+	} while(next_permutation(digits.begin(), digits.end()));
+	cout << accumulate(nums.begin(), nums.end(), 0) << endl;
 }

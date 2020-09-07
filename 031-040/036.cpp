@@ -16,22 +16,32 @@ typedef long double LD;
 typedef vector<LL> VLL;
 typedef pair<LL, LL> PLL;
 
-int main() {
-	sll(t);
-	rep(_, 0, t) {
-		sll(n);
-		LL sum = 0;
-		LL current = 1, next = 2;
-		while(current <= n) {
-			// If even add to the sum
-			if(current % 2 == 0) {
-				sum += current;
-			}
-			// Next number is the sum of the previous two numbers
-			LL next_to_next = current + next;
-			current = next;
-			next = next_to_next;
-		}
-		pll(sum); nl;
+VLL convertToBase(LL num, LL k) {
+	VLL digits;
+	while(num != 0) {
+		digits.push_back(num % k);
+		num /= k;
 	}
+	reverse(digits.begin(), digits.end());
+	return digits;
+}
+
+bool isPalindrome(VLL digits) {
+	rep(i, 0, digits.size()) {
+		if(digits[i] != digits[digits.size()-i-1]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+int main() {
+	sll(n); sll(k);
+	LL sum = 0;
+	rep(i, 1, n+1) {
+		if(isPalindrome(convertToBase(i, 10)) && isPalindrome(convertToBase(i, k))) {
+			sum += i;
+		}
+	}
+	pll(sum); nl;
 }
